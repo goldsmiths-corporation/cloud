@@ -3,40 +3,7 @@
 <head>
     <title>Goldsmiths Corporation</title> 
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <script>
-        setTimeout(function() {
-            document.body.classList.add('fade-out'); // Start the fade-out effect
-            setTimeout(function() {
-                window.location.href = 'about.html'; // Redirect after the fade-out
-            }, 1000); // This should match the duration of the CSS transition
-        }, 3500); // Adjust this to control how long before the fade-out starts
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Find the logo link element
-            var logoLink = document.querySelector('.logo-section a');
-            // Override the click event on the logo link
-            logoLink.addEventListener('click', function(e) {
-                e.preventDefault(); // Prevent the default link behavior
-                document.body.style.transition = "opacity 0.5s ease-out";
-                document.body.style.opacity = "0"; // Start fade out
-    
-                // Wait for the fade out to finish before redirecting
-                setTimeout(function() {
-                    window.location.href = logoLink.href; // Use the href of the clicked link
-                }, 500); // Match this with the CSS transition time
-            });
-        });
-    </script>  
     <style>
-
-        body {
-            transition: opacity 1s ease-out;
-        }
-        .fade-out {
-            opacity: 0;
-        }
-
 
         body {
             margin: 0;
@@ -47,7 +14,7 @@
         }
         .logo-section {
             position: absolute; /* Absolute positioning */
-            top: 50%; /* Center vertically */
+            top: 45%; /* Center vertically */
             left: 50%; /* Center horizontally */
             transform: translate(-50%, -50%); /* Adjust for the size of the element */
             text-align: center;
@@ -57,26 +24,43 @@
             width: auto;
             transition: transform 0.3s ease;
         }
-        img:hover { 
-            transform: scale(1.05);
+        .box-section {
+            position: absolute;
+            top: 70%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+        .box {
+            background-color:#7b7b7b; /* Gray background */
+            border: none; 
+            padding: 0.5vh 2vh; 
+            text-align: center;
+            text-decoration: none;
+
+            font-size: 3vh; 
+            font-family: 'Roboto Condensed', sans-serif; 
+            cursor: pointer; /* Cursor pointer to indicate it's clickable */
+            border-radius: 2vh; /* Rounded corners */
+            color: #0b2a0d;
         }
     </style>
-     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T52VGRX806"></script>
-    <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-T52VGRX806');
-    </script>
-    <!-- Google tag (gtag.js) -->
 </head>
 <body>
     <div class="logo-section">
-        <a href="about.html">
+        <a>
             <img src="logo.png" alt="Goldsmiths Corporation Logo">
         </a>
     </div>
+    <div class="box-section">
+        <form method="post" action="{% url 'your_login_url_name' %}">
+            {% csrf_token %}
+            <input type="text" name="username" class="box" placeholder="Username">
+            <input type="password" name="password" class="box" placeholder="Password">
+            <input type="submit" value="Login" class="box">
+        </form>
+    </div>
+
 </body>
 </html>
+
