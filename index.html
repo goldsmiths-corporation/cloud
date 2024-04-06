@@ -8,7 +8,7 @@
         body {
             margin: 0;
             padding: 0;
-            background-color: #0b2a0d; /* #0b2a0d for background, #ffe23c for logo */
+            background-color: #0b2a0d; /* #0b2a0d for background, #dbba00 for logo */
             position: relative; /* Set positioning context */
             height: 100vh; /* Full viewport height */
         }
@@ -26,23 +26,43 @@
         }
         .box-section {
             position: absolute;
-            top: 70%;
+            top: 71%;
             left: 50%;
             transform: translate(-50%, -50%);
             text-align: center;
         }
         .box {
-            background-color:#7b7b7b; /* Gray background */
-            border: none; 
-            padding: 0.5vh 2vh; 
-            text-align: center;
-            text-decoration: none;
+            background-color: #0b2a0d; /* Same as the body background */
+            border: 2px solid #6e5d00; /* Yellow border */
+            padding: 0.3vh 2vh; /* Reduced padding */
+            margin: 1vh auto; /* Margins to center */
+            font-size: 2.5vh; /* Reduced font-size */
+            font-family: 'Roboto Condensed', sans-serif;
+            color: #6e5d00; /* Text color set to yellow */
+            border-radius: 2vh;
+            display: block;
+            text-align: center; /* Center text */
+        }
+        .box::placeholder {
+            color: #6e5d00; /* Placeholder text color set to match the border */
+            opacity: 1; /* Firefox reduces the opacity of the placeholder by default, this ensures consistency across browsers */
+        }
 
-            font-size: 3vh; 
-            font-family: 'Roboto Condensed', sans-serif; 
-            cursor: pointer; /* Cursor pointer to indicate it's clickable */
-            border-radius: 2vh; /* Rounded corners */
-            color: #0b2a0d;
+        .box:focus::placeholder {
+            color: transparent; /* Hide placeholder on focus if desired */
+        }
+        .login-button {
+            background-color: transparent; /* Transparent background */
+            color: #6e5d00; /* Text color set to yellow */
+            padding: 0.5vh 2vh;
+            margin: 1vh auto; /* Increased vertical margin */
+            display: block;
+            border: 2px solid #0b2a0d; /* Yellow border */
+            font-size: 2.5vh;
+            font-family: 'Roboto Condensed', sans-serif;
+            border-radius: 2vh;
+            cursor: pointer;
+            outline: none; /* Removes the default outline */
         }
     </style>
 </head>
@@ -54,10 +74,10 @@
     </div>
     <div class="box-section">
         <form method="post" action="{% url 'your_login_url_name' %}">
-            {% csrf_token %}
+            <!-- {% csrf_token %} REPLACE WITH DJANGO TEMPLATE TAG? -->
             <input type="text" name="username" class="box" placeholder="Username">
             <input type="password" name="password" class="box" placeholder="Password">
-            <input type="submit" value="Login" class="box">
+            <input type="submit" value="<>" class="login-button">
         </form>
     </div>
 
